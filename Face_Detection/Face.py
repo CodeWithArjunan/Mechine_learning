@@ -2,7 +2,7 @@ import cv2
 alg = "haarcascade_frontalface_default.xml"
 haar_cascade= cv2.CascadeClassifier(alg)
 
-com = cv2.VideoCapture(0)
+com = cv2.VideoCapture(0) #id for camera
 
 while True:
     _,img = com.read()
