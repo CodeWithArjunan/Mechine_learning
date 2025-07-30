@@ -4,21 +4,21 @@ import warnings
 warnings.filterwarnings('ignore')
 
 #Data Collection
-df = pd.read_csv('heart.csv')
+df = pd.read_csv('hearts.csv')
 print(df)
 
 #Data preprocessing
 from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
 
-df['sex'] = le.fit_transform(df['sex'])
-df['chestPainType'] = le.fit_transform(df['chestPainType'])
-df['RestingECG'] = le.fit_transform(dff['RestingECG'])
+df['Sex'] = le.fit_transform(df['Sex'])
+df['ChestPainType'] = le.fit_transform(df['ChestPainType'])
+df['RestingECG'] = le.fit_transform(df['RestingECG'])
 df['ExerciseAngina'] = le.fit_transform(df['ExerciseAngina'])
-df['ST_slope'] = le.fit_transform(df['ST_slope'])
+df['ST_Slope'] = le.fit_transform(df['ST_Slope'])
 
 #Before training Setup
-x = df.drop(coloumns='HeartDisease')
+x = df.drop(columns='HeartDisease')
 y = df['HeartDisease']
 print(x)
 print(y)
@@ -26,14 +26,14 @@ print(y)
 from sklearn.model_selection import train_test_split
 x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.2,random_state=12)
 
-print("DF",df.shope)
-print("x_train",x_train.shope)
-print("x_test",x_test.shope)
-print("y_train",y_train.shope)
-print("y_test",y_test.shope)
+print("DF",df.shape)
+print("x_train",x_train.shape)
+print("x_test",x_test.shape)
+print("y_train",y_train.shape)
+print("y_test",y_test.shape)
 
 #Training Model
-from sklearn.naive_layes import GaussianNB
+from sklearn.naive_bayes import GaussianNB
 NB=GaussianNB()
 
 NB.fit(x_train,y_train)
@@ -53,6 +53,8 @@ testPrediction = NB.predict([[19,1,4,120,166,0,1,138,0,0,2]])
 if testPrediction == 1:
     print("The Patient have Heart disease, please consul the doctor")
 
+else:
+    print("The patient Normal")
 
 
 
